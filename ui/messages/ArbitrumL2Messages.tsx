@@ -86,7 +86,6 @@ const ArbitrumL2Messages = ({ direction }: Props) => {
         title={ direction === 'from-rollup' ?
           `Withdrawals (L2${ nbsp }${ rightLineArrow }${ nbsp }L1)` :
           `Deposits (L1${ nbsp }${ rightLineArrow }${ nbsp }L2)` }
-        withTextAd
       />
       <DataListDisplay
         isError={ isError }

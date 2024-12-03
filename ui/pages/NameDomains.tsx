@@ -235,7 +235,6 @@ const NameDomains = () => {
     <>
       <PageTitle
         title={ config.meta.seo.enhancedDataEnabled ? `${ config.chain.name } name domains` : 'Name services lookup' }
-        withTextAd
       />
       <DataListDisplay
         isError={ isError }

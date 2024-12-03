@@ -139,7 +139,6 @@ const VerifiedContracts = () => {
     <Box>
       <PageTitle
         title={ config.meta.seo.enhancedDataEnabled ? `Verified ${ config.chain.name } contracts` : 'Verified contracts' }
-        withTextAd
       />
       <VerifiedContractsCounters/>
       <DataListDisplay

@@ -67,7 +67,7 @@ const ZkEvmL2Deposits = () => {
 
   return (
     <>
-      <PageTitle title={ `Deposits (L1${ nbsp }${ rightLineArrow }${ nbsp }L2)` } withTextAd/>
+      <PageTitle title={ `Deposits (L1${ nbsp }${ rightLineArrow }${ nbsp }L2)` }/>
       <DataListDisplay
         isError={ isError }
         items={ data?.items }

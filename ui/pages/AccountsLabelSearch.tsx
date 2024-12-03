@@ -98,7 +98,7 @@ const AccountsLabelSearch = () => {
 
   return (
     <>
-      <PageTitle title="Search result" withTextAd/>
+      <PageTitle title="Search result"/>
       <DataListDisplay
         isError={ isError }
         items={ data?.items }

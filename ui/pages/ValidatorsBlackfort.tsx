@@ -90,7 +90,7 @@ const ValidatorsBlackfort = () => {
 
   return (
     <Box>
-      <PageTitle title="Validators" withTextAd/>
+      <PageTitle title="Validators"/>
       <ValidatorsCounters/>
       <DataListDisplay
         isError={ isError }

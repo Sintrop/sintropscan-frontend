@@ -71,7 +71,7 @@ const ArbitrumL2TxnBatches = () => {
 
   return (
     <>
-      <PageTitle title="Txn batches" withTextAd/>
+      <PageTitle title="Txn batches"/>
       <DataListDisplay
         isError={ isError }
         items={ data?.items }

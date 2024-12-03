@@ -70,7 +70,6 @@ const TokenTransfers = () => {
     <>
       <PageTitle
         title="Token Transfers"
-        withTextAd
       />
       <DataListDisplay
         isError={ tokenTransfersQuery.isError }
