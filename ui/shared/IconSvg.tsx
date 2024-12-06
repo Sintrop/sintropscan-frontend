@@ -3,7 +3,7 @@ import { Skeleton, chakra } from '@chakra-ui/react';
 import { type IconName } from 'public/icons/name';
 import React from 'react';
 
-export const href = '/icons/sprite.svg';
+export const href = '/icons';
 
 export { IconName };
 
@@ -16,7 +16,7 @@ const IconSvg = ({ name, isLoading, ...props }: Props, ref: React.ForwardedRef<H
   return (
     <Skeleton isLoaded={ !isLoading } display="inline-block" { ...props } ref={ ref }>
       <chakra.svg w="100%" h="100%">
-        <use href={ `${ href }#${ name }` }/>
+        <use href={ `${ href }/${ name }.svg` }/>
       </chakra.svg>
     </Skeleton>
   );
