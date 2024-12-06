@@ -31,7 +31,7 @@ const TokenTransfer = ({ transfersQuery, tokenId, token, shouldRender = true }: 
   const isMobile = useIsMobile();
   const isMounted = useIsMounted();
   const router = useRouter();
-  const { isError, isPlaceholderData, data, pagination } = transfersQuery;
+  const { isError, data, pagination } = transfersQuery;
 
   const [ newItemsCount, setNewItemsCount ] = useGradualIncrement(0);
   const [ socketAlert, setSocketAlert ] = React.useState('');
@@ -52,7 +52,7 @@ const TokenTransfer = ({ transfersQuery, tokenId, token, shouldRender = true }: 
     topic: `tokens:${ router.query.hash?.toString().toLowerCase() }`,
     onSocketClose: handleSocketClose,
     onSocketError: handleSocketError,
-    isDisabled: isPlaceholderData || isError || pagination.page !== 1,
+    isDisabled: isError || pagination.page !== 1,
   });
   useSocketMessage({
     channel,
@@ -75,7 +75,7 @@ const TokenTransfer = ({ transfersQuery, tokenId, token, shouldRender = true }: 
           socketInfoNum={ newItemsCount }
           tokenId={ tokenId }
           token={ token }
-          isLoading={ isPlaceholderData }
+          isLoading={ !data }
         />
       </Box>
       <Box display={{ base: 'block', lg: 'none' }}>
@@ -85,10 +85,10 @@ const TokenTransfer = ({ transfersQuery, tokenId, token, shouldRender = true }: 
             num={ newItemsCount }
             alert={ socketAlert }
             type="token_transfer"
-            isLoading={ isPlaceholderData }
+            isLoading={ !data }
           />
         ) }
-        <TokenTransferList data={ data?.items } tokenId={ tokenId } isLoading={ isPlaceholderData }/>
+        <TokenTransferList data={ data?.items } tokenId={ tokenId } isLoading={ !data }/>
       </Box>
     </>
   ) : null;
