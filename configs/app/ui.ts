@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-properties */
 import type { ContractCodeIde } from 'types/client/contract';
 import { NAVIGATION_LINK_IDS, type NavItemExternal, type NavigationLinkId, type NavigationLayout } from 'types/client/navigation';
 import { HOME_STATS_WIDGET_IDS, type ChainIndicatorId, type HeroBannerConfig, type HomeStatsWidgetId } from 'types/homepage';
@@ -9,10 +10,10 @@ import { COLOR_THEMES } from 'lib/settings/colorTheme';
 
 import * as features from './features';
 import * as views from './ui/views';
-import { getEnvValue, getExternalAssetFilePath, parseEnvJson } from './utils';
+import { getExternalAssetFilePath, parseEnvJson } from './utils';
 
 const hiddenLinks = (() => {
-  const parsedValue = parseEnvJson<Array<NavigationLinkId>>(getEnvValue('NEXT_PUBLIC_NAVIGATION_HIDDEN_LINKS')) || [];
+  const parsedValue = parseEnvJson<Array<NavigationLinkId>>(process.env.NEXT_PUBLIC_NAVIGATION_HIDDEN_LINKS) || [];
 
   if (!Array.isArray(parsedValue)) {
     return undefined;
@@ -27,7 +28,7 @@ const hiddenLinks = (() => {
 })();
 
 const homePageStats: Array<HomeStatsWidgetId> = (() => {
-  const parsedValue = parseEnvJson<Array<HomeStatsWidgetId>>(getEnvValue('NEXT_PUBLIC_HOMEPAGE_STATS'));
+  const parsedValue = parseEnvJson<Array<HomeStatsWidgetId>>(process.env.NEXT_PUBLIC_HOMEPAGE_STATS);
 
   if (!Array.isArray(parsedValue)) {
     const rollupFeature = features.rollup;
@@ -43,12 +44,12 @@ const homePageStats: Array<HomeStatsWidgetId> = (() => {
 })();
 
 const highlightedRoutes = (() => {
-  const parsedValue = parseEnvJson<Array<NavigationLinkId>>(getEnvValue('NEXT_PUBLIC_NAVIGATION_HIGHLIGHTED_ROUTES'));
+  const parsedValue = parseEnvJson<Array<NavigationLinkId>>(process.env.NEXT_PUBLIC_NAVIGATION_HIGHLIGHTED_ROUTES);
   return Array.isArray(parsedValue) ? parsedValue : [];
 })();
 
 const defaultColorTheme = (() => {
-  const envValue = getEnvValue('NEXT_PUBLIC_COLOR_THEME_DEFAULT') as ColorThemeId | undefined;
+  const envValue = process.env.NEXT_PUBLIC_COLOR_THEME_DEFAULT as ColorThemeId | undefined;
   return COLOR_THEMES.find((theme) => theme.id === envValue);
 })();
 
@@ -64,52 +65,52 @@ const UI = Object.freeze({
     },
     hiddenLinks,
     highlightedRoutes,
-    otherLinks: parseEnvJson<Array<NavItemExternal>>(getEnvValue('NEXT_PUBLIC_OTHER_LINKS')) || [],
+    otherLinks: parseEnvJson<Array<NavItemExternal>>(process.env.NEXT_PUBLIC_OTHER_LINKS) || [],
     featuredNetworks: getExternalAssetFilePath('NEXT_PUBLIC_FEATURED_NETWORKS'),
-    layout: (getEnvValue('NEXT_PUBLIC_NAVIGATION_LAYOUT') || 'vertical') as NavigationLayout,
+    layout: (process.env.NEXT_PUBLIC_NAVIGATION_LAYOUT || 'vertical') as NavigationLayout,
   },
   footer: {
     links: getExternalAssetFilePath('NEXT_PUBLIC_FOOTER_LINKS'),
-    frontendVersion: getEnvValue('NEXT_PUBLIC_GIT_TAG'),
-    frontendCommit: getEnvValue('NEXT_PUBLIC_GIT_COMMIT_SHA'),
+    frontendVersion: process.env.NEXT_PUBLIC_GIT_TAG,
+    frontendCommit: process.env.NEXT_PUBLIC_GIT_COMMIT_SHA,
   },
   homepage: {
-    charts: parseEnvJson<Array<ChainIndicatorId>>(getEnvValue('NEXT_PUBLIC_HOMEPAGE_CHARTS')) || [],
+    charts: parseEnvJson<Array<ChainIndicatorId>>(process.env.NEXT_PUBLIC_HOMEPAGE_CHARTS) || [],
     stats: homePageStats,
-    heroBanner: parseEnvJson<HeroBannerConfig>(getEnvValue('NEXT_PUBLIC_HOMEPAGE_HERO_BANNER_CONFIG')),
+    heroBanner: parseEnvJson<HeroBannerConfig>(process.env.NEXT_PUBLIC_HOMEPAGE_HERO_BANNER_CONFIG),
     // !!! DEPRECATED !!!
     plate: {
-      background: getEnvValue('NEXT_PUBLIC_HOMEPAGE_PLATE_BACKGROUND'),
-      textColor: getEnvValue('NEXT_PUBLIC_HOMEPAGE_PLATE_TEXT_COLOR'),
+      background: process.env.NEXT_PUBLIC_HOMEPAGE_PLATE_BACKGROUND,
+      textColor: process.env.NEXT_PUBLIC_HOMEPAGE_PLATE_TEXT_COLOR,
     },
   },
   views,
   indexingAlert: {
     blocks: {
-      isHidden: getEnvValue('NEXT_PUBLIC_HIDE_INDEXING_ALERT_BLOCKS') === 'true' ? true : false,
+      isHidden: process.env.NEXT_PUBLIC_HIDE_INDEXING_ALERT_BLOCKS === 'true' ? true : false,
     },
     intTxs: {
-      isHidden: getEnvValue('NEXT_PUBLIC_HIDE_INDEXING_ALERT_INT_TXS') === 'true' ? true : false,
+      isHidden: process.env.NEXT_PUBLIC_HIDE_INDEXING_ALERT_INT_TXS === 'true' ? true : false,
     },
   },
   maintenanceAlert: {
-    message: getEnvValue('NEXT_PUBLIC_MAINTENANCE_ALERT_MESSAGE'),
+    message: process.env.NEXT_PUBLIC_MAINTENANCE_ALERT_MESSAGE,
   },
   explorers: {
-    items: parseEnvJson<Array<NetworkExplorer>>(getEnvValue('NEXT_PUBLIC_NETWORK_EXPLORERS')) || [],
+    items: parseEnvJson<Array<NetworkExplorer>>(process.env.NEXT_PUBLIC_NETWORK_EXPLORERS) || [],
   },
   ides: {
-    items: parseEnvJson<Array<ContractCodeIde>>(getEnvValue('NEXT_PUBLIC_CONTRACT_CODE_IDES')) || [],
+    items: parseEnvJson<Array<ContractCodeIde>>(process.env.NEXT_PUBLIC_CONTRACT_CODE_IDES) || [],
   },
-  hasContractAuditReports: getEnvValue('NEXT_PUBLIC_HAS_CONTRACT_AUDIT_REPORTS') === 'true' ? true : false,
+  hasContractAuditReports: process.env.NEXT_PUBLIC_HAS_CONTRACT_AUDIT_REPORTS === 'true' ? true : false,
   colorTheme: {
     'default': defaultColorTheme,
   },
   fonts: {
-    heading: parseEnvJson<FontFamily>(getEnvValue('NEXT_PUBLIC_FONT_FAMILY_HEADING')),
-    body: parseEnvJson<FontFamily>(getEnvValue('NEXT_PUBLIC_FONT_FAMILY_BODY')),
+    heading: parseEnvJson<FontFamily>(process.env.NEXT_PUBLIC_FONT_FAMILY_HEADING),
+    body: parseEnvJson<FontFamily>(process.env.NEXT_PUBLIC_FONT_FAMILY_BODY),
   },
-  maxContentWidth: getEnvValue('NEXT_PUBLIC_MAX_CONTENT_WIDTH_ENABLED') === 'false' ? false : true,
+  maxContentWidth: process.env.NEXT_PUBLIC_MAX_CONTENT_WIDTH_ENABLED === 'false' ? false : true,
 });
 
 export default UI;

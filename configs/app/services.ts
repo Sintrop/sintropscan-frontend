@@ -1,7 +1,6 @@
-import { getEnvValue } from './utils';
-
+/* eslint-disable no-restricted-properties */
 export default Object.freeze({
   reCaptchaV3: {
-    siteKey: getEnvValue('NEXT_PUBLIC_RE_CAPTCHA_V3_APP_SITE_KEY'),
+    siteKey: process.env.NEXT_PUBLIC_RE_CAPTCHA_V3_APP_SITE_KEY,
   },
 });

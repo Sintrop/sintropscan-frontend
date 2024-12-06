@@ -1,10 +1,9 @@
+/* eslint-disable no-restricted-properties */
 import stripTrailingSlash from 'lib/stripTrailingSlash';
 
-import { getEnvValue } from './utils';
-
-const apiHost = getEnvValue('NEXT_PUBLIC_API_HOST');
-const apiSchema = getEnvValue('NEXT_PUBLIC_API_PROTOCOL') || 'https';
-const apiPort = getEnvValue('NEXT_PUBLIC_API_PORT');
+const apiHost = process.env.NEXT_PUBLIC_API_HOST;
+const apiSchema = process.env.NEXT_PUBLIC_API_PROTOCOL || 'https';
+const apiPort = process.env.NEXT_PUBLIC_API_PORT;
 const apiEndpoint = [
   apiSchema || 'https',
   '://',
@@ -12,7 +11,7 @@ const apiEndpoint = [
   apiPort && ':' + apiPort,
 ].filter(Boolean).join('');
 
-const socketSchema = getEnvValue('NEXT_PUBLIC_API_WEBSOCKET_PROTOCOL') || 'wss';
+const socketSchema = process.env.NEXT_PUBLIC_API_WEBSOCKET_PROTOCOL || 'wss';
 const socketEndpoint = [
   socketSchema,
   '://',
@@ -26,7 +25,7 @@ const api = Object.freeze({
   port: apiPort,
   endpoint: apiEndpoint,
   socket: socketEndpoint,
-  basePath: stripTrailingSlash(getEnvValue('NEXT_PUBLIC_API_BASE_PATH') || ''),
+  basePath: stripTrailingSlash(process.env.NEXT_PUBLIC_API_BASE_PATH || ''),
 });
 
 export default api;
