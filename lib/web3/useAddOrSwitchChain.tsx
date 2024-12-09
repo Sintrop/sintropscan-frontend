@@ -1,3 +1,4 @@
+/* eslint-disable no-restricted-properties */
 import _get from 'lodash/get';
 import React from 'react';
 
@@ -38,7 +39,7 @@ export default function useAddOrSwitchChain() {
             decimals: config.chain.currency.decimals,
           },
           rpcUrls: [ config.chain.rpcUrl ],
-          blockExplorerUrls: [ config.app.baseUrl ],
+          blockExplorerUrls: [ `https://${ process.env.NEXT_PUBLIC_APP_HOST }` ],
         } ] as never;
         // in wagmi types for wallet_addEthereumChain method is not provided
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
