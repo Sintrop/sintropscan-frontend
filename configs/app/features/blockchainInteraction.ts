@@ -1,9 +1,9 @@
 import type { Feature } from './types';
 
 import chain from '../chain';
-import { getEnvValue } from '../utils';
 
-const walletConnectProjectId = getEnvValue('NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID');
+// eslint-disable-next-line no-restricted-properties
+const walletConnectProjectId = process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID;
 
 const title = 'Blockchain interaction (writing to contract, etc.)';
 
