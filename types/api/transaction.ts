@@ -54,7 +54,7 @@ export type Transaction = {
   token_transfers_overflow: boolean;
   exchange_rate: string | null;
   method: string | null;
-  tx_types: Array<TransactionType>;
+  transaction_types: Array<TransactionType>;
   tx_tag: string | null;
   actions: Array<TxAction>;
   l1_fee?: string;

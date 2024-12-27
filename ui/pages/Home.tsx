@@ -1,4 +1,3 @@
-/* eslint-disable no-restricted-properties */
 import { Box, Flex } from '@chakra-ui/react';
 import React from 'react';
 
@@ -26,9 +25,6 @@ const Home = () => {
 
     return <LatestBlocks/>;
   })();
-
-  // eslint-disable-next-line no-console
-  console.log(process.env.NEXT_PUBLIC_WALLET_CONNECT_PROJECT_ID);
 
   return (
     <Box as="main" suppressHydrationWarning>
