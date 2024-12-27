@@ -62,7 +62,7 @@ export const base: Transaction = {
   token_transfers_overflow: false,
   tx_burnt_fee: '461030000000000',
   tx_tag: null,
-  tx_types: [
+  transaction_types: [
     'contract_call',
   ],
   type: 2,
@@ -102,7 +102,7 @@ export const withContractCreation: Transaction = {
     watchlist_names: [],
     ens_domain_name: null,
   },
-  tx_types: [
+  transaction_types: [
     'contract_creation',
   ],
 };
@@ -132,7 +132,7 @@ export const withTokenTransfer: Transaction = {
     tokenTransferMock.erc404B,
   ],
   token_transfers_overflow: true,
-  tx_types: [
+  transaction_types: [
     'token_transfer',
   ],
 };
@@ -373,7 +373,7 @@ export const withBlob = {
   ],
   burnt_blob_fee: '2820464441688064',
   max_fee_per_blob_gas: '60000000000',
-  tx_types: [ 'blob_transaction' as const ],
+  transaction_types: [ 'blob_transaction' as const ],
   type: 3,
 };
 

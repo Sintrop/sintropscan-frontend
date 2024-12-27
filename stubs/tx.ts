@@ -28,7 +28,7 @@ export const TX: Transaction = {
   base_fee_per_gas: '24',
   from: ADDRESS_PARAMS,
   token_transfers: null,
-  tx_types: [
+  transaction_types: [
     'coin_transfer',
   ],
   gas_used: '21000',
