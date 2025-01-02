@@ -12,7 +12,7 @@ export const TX: Transaction = {
     value: '2100000000000000',
   },
   gas_limit: '21000',
-  block: 9004925,
+  block_number: 9004925,
   status: 'ok',
   method: 'placeholder',
   confirmations: 71,

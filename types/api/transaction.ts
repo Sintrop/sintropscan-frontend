@@ -30,7 +30,7 @@ export type Transaction = {
   result: string;
   confirmations: number;
   status: 'ok' | 'error' | null | undefined;
-  block: number | null;
+  block_number: number | null;
   timestamp: string | null;
   confirmation_duration: Array<number> | null;
   from: AddressParam;

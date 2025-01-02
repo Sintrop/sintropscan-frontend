@@ -8,7 +8,7 @@ import * as decodedInputDataMock from 'mocks/txs/decodedInputData';
 
 export const base: Transaction = {
   base_fee_per_gas: '10000000000',
-  block: 29611750,
+  block_number: 29611750,
   confirmation_duration: [
     0,
     6364,
@@ -182,7 +182,7 @@ export const withRawRevertReason: Transaction = {
 export const pending: Transaction = {
   ...base,
   base_fee_per_gas: null,
-  block: null,
+  block_number: null,
   confirmation_duration: [],
   confirmations: 0,
   decoded_input: null,

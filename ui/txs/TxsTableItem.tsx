@@ -89,10 +89,10 @@ const TxsTableItem = ({ tx, showBlockInfo, currentAddress, enableTimeIncrement, 
       </Td>
       { showBlockInfo && (
         <Td>
-          { tx.block && (
+          { tx.block_number && (
             <BlockEntity
               isLoading={ isLoading }
-              number={ tx.block }
+              number={ tx.block_number }
               noIcon
               fontSize="sm"
               lineHeight={ 6 }

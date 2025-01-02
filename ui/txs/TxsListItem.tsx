@@ -86,12 +86,12 @@ const TxsListItem = ({ tx, isLoading, showBlockInfo, currentAddress, enableTimeI
           </Skeleton>
         </Flex>
       ) }
-      { showBlockInfo && tx.block !== null && (
+      { showBlockInfo && tx.block_number !== null && (
         <Flex mt={ 2 }>
           <Skeleton isLoaded={ !isLoading } display="inline-block" whiteSpace="pre">Block </Skeleton>
           <BlockEntity
             isLoading={ isLoading }
-            number={ tx.block }
+            number={ tx.block_number }
             noIcon
           />
         </Flex>
