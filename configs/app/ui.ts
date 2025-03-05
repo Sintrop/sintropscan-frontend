@@ -56,8 +56,8 @@ const defaultColorTheme = (() => {
 const UI = Object.freeze({
   navigation: {
     logo: {
-      'default': 'https://www.sintrop.com/assets/images/logo-chain-light.png',
-      dark: 'https://www.sintrop.com/assets/images/logo-chain-dark.png',
+      'default': 'https://www.sintrop.com/assets/images/sintrop-chain-light.png',
+      dark: 'https://www.sintrop.com/assets/images/sintrop-chain-dark.png',
     },
     icon: {
       'default': 'https://www.sintrop.com/assets/images/icon-chain.png',
